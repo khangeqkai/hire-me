@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khang Nguyen — AI-Native Full Stack Product Builder — for EMBR</title>
+<meta name="description" content="5 patents. Two dead startups. One app shipped to both stores. Application for EMBR's AI-Native Full Stack Product Builder role.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#F1F3F2;
+  --ink:#0F1519;
+  --ink-60:#5A6670;
+  --blueprint:#1E4E8C;
+  --sonar:#0E8C8B;
+  --signal:#C97A0A;
+  --rule:#CCD3D4;
+  --panel:#E7EBEA;
+  --display:"Barlow Condensed",Impact,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:940px;margin:0 auto;padding:0 24px}
+a{color:var(--blueprint)}
+.mono{font-family:var(--mono)}
+
+/* ---------- utility: label ---------- */
+.label{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-60);
+}
+
+/* ---------- top bar ---------- */
+.topbar{
+  border-bottom:1px solid var(--rule);background:var(--ground);
+  position:sticky;top:0;z-index:20;
+}
+.topbar .wrap{
+  display:flex;justify-content:space-between;gap:16px;
+  padding-top:10px;padding-bottom:10px;flex-wrap:wrap;
+}
+.topbar .doc{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60)}
+.topbar .doc b{color:var(--ink);font-weight:600}
+
+/* ---------- hero ---------- */
+.hero{padding:56px 0 40px;border-bottom:1px solid var(--rule)}
+h1{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(52px,11vw,116px);line-height:.88;
+  letter-spacing:-.01em;margin:14px 0 0;text-transform:uppercase;
+}
+.role{
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(20px,4vw,30px);line-height:1.1;
+  text-transform:uppercase;letter-spacing:.02em;
+  color:var(--blueprint);margin:6px 0 0;
+}
+.thesis{
+  font-size:clamp(18px,2.4vw,21px);line-height:1.5;
+  max-width:36em;margin:26px 0 0;
+}
+.thesis strong{font-weight:600;box-shadow:inset 0 -.4em 0 rgba(201,122,10,.22)}
+
+/* ---------- signature: trace ---------- */
+.trace{margin:36px 0 0;border:1px solid var(--rule);background:#fff}
+.trace-head{
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--panel);
+}
+.trace svg{display:block;width:100%;height:auto}
+.trace-foot{padding:9px 14px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;color:var(--ink-60)}
+.tgrid{stroke:var(--rule);stroke-width:1}
+.tline{
+  fill:none;stroke:var(--sonar);stroke-width:2.5;
+  stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:2400;stroke-dashoffset:2400;
+  animation:draw 2.6s cubic-bezier(.4,0,.2,1) .3s forwards;
+}
+.tfill{fill:var(--sonar);opacity:0;animation:fade 1.4s ease 1.8s forwards}
+.tdot{fill:var(--signal);opacity:0;animation:fade .5s ease forwards}
+.tlab{font-family:var(--mono);font-size:9.5px;fill:var(--ink-60);opacity:0;animation:fade .5s ease forwards}
+.taxis{font-family:var(--mono);font-size:9px;fill:var(--ink-60);letter-spacing:.1em}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fade{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  .tline{animation:none;stroke-dashoffset:0}
+  .tfill,.tdot,.tlab{animation:none;opacity:1}
+}
+
+/* ---------- readout strip ---------- */
+.readout{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--rule);border-bottom:none;margin:34px 0 0;background:#fff;
+}
+.readout div{padding:16px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule)}
+.readout div:last-child{border-right:none}
+.readout b{display:block;font-family:var(--display);font-size:38px;line-height:1;font-weight:700}
+.readout span{display:block;margin-top:5px}
+@media(max-width:640px){
+  .readout{grid-template-columns:repeat(2,1fr)}
+  .readout div:nth-child(2){border-right:none}
+}
+
+/* ---------- sections ---------- */
+section{padding:52px 0;border-bottom:1px solid var(--rule)}
+h2{
+  font-family:var(--display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(28px,5vw,44px);line-height:1;letter-spacing:.005em;margin:8px 0 0;
+}
+.lede{max-width:40em;margin:16px 0 0;color:var(--ink-60)}
+
+/* ---------- brief: their asks ---------- */
+.asks{margin:30px 0 0;border-top:1px solid var(--rule)}
+.ask{
+  display:grid;grid-template-columns:190px 1fr;gap:20px;
+  padding:16px 0;border-bottom:1px solid var(--rule);align-items:baseline;
+}
+.ask > .label{padding-top:3px}
+.ask p{margin:0}
+@media(max-width:640px){.ask{grid-template-columns:1fr;gap:6px}}
+
+/* ---------- project cards ---------- */
+.proj{border:1px solid var(--rule);background:#fff;margin:22px 0 0}
+.proj-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  padding:14px 18px;border-bottom:1px solid var(--rule);background:var(--panel);flex-wrap:wrap;
+}
+.proj-head h3{
+  font-family:var(--display);text-transform:uppercase;font-weight:700;
+  font-size:26px;line-height:1;margin:0;
+}
+.tag{
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 8px;border:1px solid var(--sonar);color:var(--sonar);white-space:nowrap;
+}
+.tag.dead{border-color:var(--ink-60);color:var(--ink-60)}
+.tag.live{border-color:var(--signal);color:var(--signal)}
+.proj-body{padding:18px}
+.proj-body p{margin:0 0 14px}
+.proj-body ul{margin:0 0 14px;padding-left:20px}
+.proj-body li{margin:0 0 8px}
+.spec{border-top:1px solid var(--rule)}
+.spec dl{display:grid;grid-template-columns:150px 1fr;margin:0}
+.spec dt{
+  padding:9px 18px;border-bottom:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-60);
+}
+.spec dd{padding:9px 18px;border-bottom:1px solid var(--rule);margin:0;font-size:15px}
+.spec dl > :nth-last-child(-n+2){border-bottom:none}
+@media(max-width:640px){
+  .spec dl{grid-template-columns:1fr}
+  .spec dt{padding-bottom:0;border-bottom:none}
+  .spec dd{padding-top:2px}
+}
+.links{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;border-top:1px solid var(--rule)}
+.links a{
+  font-family:var(--mono);font-size:12px;text-decoration:none;
+  border:1px solid var(--blueprint);padding:6px 11px;color:var(--blueprint);
+}
+.links a:hover,.links a:focus-visible{background:var(--blueprint);color:#fff}
+
+/* ---------- ai stack ---------- */
+.stack{width:100%;border-collapse:collapse;margin:26px 0 0;background:#fff;border:1px solid var(--rule)}
+.stack th{
+  text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-60);font-weight:500;
+  padding:11px 14px;border-bottom:1px solid var(--rule);background:var(--panel);
+}
+.stack td{padding:12px 14px;border-bottom:1px solid var(--rule);vertical-align:top;font-size:15px}
+.stack tr:last-child td{border-bottom:none}
+.stack td:first-child{font-weight:600;white-space:nowrap}
+@media(max-width:640px){
+  .stack,.stack tbody,.stack tr,.stack td{display:block;width:100%}
+  .stack thead{display:none}
+  .stack tr{border-bottom:1px solid var(--rule)}
+  .stack tr:last-child{border-bottom:none}
+  .stack td{border-bottom:none;padding:4px 14px}
+  .stack td:first-child{padding-top:13px}
+  .stack td:last-child{padding-bottom:13px}
+}
+
+/* ---------- track record ---------- */
+.track{margin:26px 0 0;border-top:1px solid var(--rule)}
+.track-row{
+  display:grid;grid-template-columns:200px 1fr;gap:20px;
+  padding:13px 0;border-bottom:1px solid var(--rule);align-items:baseline;
+}
+.track-row b{font-family:var(--display);font-size:21px;text-transform:uppercase;font-weight:600;line-height:1.1}
+.track-row p{margin:0;color:var(--ink-60);font-size:15px}
+@media(max-width:640px){.track-row{grid-template-columns:1fr;gap:2px}}
+
+/* ---------- loom ---------- */
+.loom{
+  border:1px dashed var(--blueprint);background:#fff;
+  padding:30px 22px;margin:26px 0 0;text-align:center;
+}
+.loom p{margin:0 0 12px;color:var(--ink-60);font-size:15px}
+.btn{
+  display:inline-block;font-family:var(--mono);font-size:13px;letter-spacing:.06em;
+  text-transform:uppercase;text-decoration:none;padding:12px 20px;
+  background:var(--blueprint);color:#fff;border:1px solid var(--blueprint);
+}
+.btn:hover,.btn:focus-visible{background:var(--ink);border-color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--blueprint)}
+.btn.ghost:hover,.btn.ghost:focus-visible{background:var(--blueprint);color:#fff}
+
+/* ---------- contact ---------- */
+.contact{padding:52px 0 30px}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);background:#fff;margin:24px 0 0}
+.cgrid > div{padding:18px;border-right:1px solid var(--rule)}
+.cgrid > div:last-child{border-right:none}
+.cgrid a{font-family:var(--mono);font-size:15px;word-break:break-all}
+.cgrid .label{display:block;margin-bottom:6px}
+@media(max-width:640px){
+  .cgrid{grid-template-columns:1fr}
+  .cgrid > div{border-right:none;border-bottom:1px solid var(--rule)}
+  .cgrid > div:last-child{border-bottom:none}
+}
+.placeholder{
+  margin:18px auto 0;max-width:36em;padding:10px 14px;
+  background:#FFF4D6;border:2px solid var(--signal);color:#7A4A05;
+  font-family:var(--mono);font-size:12px;line-height:1.5;
+}
+footer{padding:22px 0 60px;font-family:var(--mono);font-size:11px;color:var(--ink-60);line-height:1.8}
+:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="doc">Application &mdash; <b>AI-Native Full Stack Product Builder</b></div>
+    <div class="doc">For <b>EMBR Group</b> &middot; Melbourne</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="label">You asked us not to send a resume. So this isn't one.</div>
+    <h1>Khang<br>Nguyen</h1>
+    <p class="role">Mechatronics engineer who builds software at AI speed</p>
+
+    <p class="thesis">
+      I've been building since I was twenty &mdash; firmware, circuit boards, tooling, factories,
+      patents. Twelve years of things you can hold. Hardware is unforgiving: a mistake costs a
+      tooling run, so you learn to get it right the first time.
+      <strong>Then AI collapsed my timeline.</strong> My last product went from idea to working
+      prototype in fourteen days and onto both app stores in three months. Solo &mdash; hardware,
+      firmware and app. Software speed, hardware discipline. Below is the evidence, not the claim.
+    </p>
+
+    <!-- SIGNATURE: dynamometer trace, drawn from the Forma.training hardware -->
+    <div class="trace">
+      <div class="trace-head">
+        <span class="label">Fig. 01 &mdash; Max-pull trace</span>
+        <span class="label">Source: Forma.training dynamometer</span>
+      </div>
+      <svg viewBox="0 0 900 260" role="img" aria-label="A force-over-time curve from a climbing dynamometer, annotated with build milestones.">
+        <line class="tgrid" x1="52" y1="30"  x2="880" y2="30"/>
+        <line class="tgrid" x1="52" y1="80"  x2="880" y2="80"/>
+        <line class="tgrid" x1="52" y1="130" x2="880" y2="130"/>
+        <line class="tgrid" x1="52" y1="180" x2="880" y2="180"/>
+        <line class="tgrid" x1="52" y1="220" x2="880" y2="220"/>
+        <line class="tgrid" x1="52" y1="18"  x2="52"  y2="220"/>
+
+        <text class="taxis" x="10" y="34">50kg</text>
+        <text class="taxis" x="10" y="134">25kg</text>
+        <text class="taxis" x="16" y="224">0</text>
+
+        <path class="tline" d="M52,220 C120,218 150,205 178,168 C196,144 210,120 232,112
+          C250,106 262,118 278,124 C300,132 318,120 340,96 C368,66 392,44 428,38
+          C470,32 498,52 524,74 C548,94 566,104 592,102 C628,99 652,86 686,70
+          C724,52 760,44 800,42 C838,40 860,42 880,44"/>
+
+        <circle class="tdot" cx="232" cy="112" r="4"  style="animation-delay:1.5s"/>
+        <text class="tlab" x="188" y="150" style="animation-delay:1.6s">BLE working, day one</text>
+
+        <circle class="tdot" cx="428" cy="38" r="4"  style="animation-delay:2.0s"/>
+        <text class="tlab" x="392" y="26" style="animation-delay:2.1s">prototype, day 14</text>
+
+        <circle class="tdot" cx="686" cy="70" r="4"  style="animation-delay:2.4s"/>
+        <text class="tlab" x="640" y="106" style="animation-delay:2.5s">shipped to both stores</text>
+
+        <circle class="tdot" cx="880" cy="44" r="4" style="animation-delay:2.8s"/>
+      </svg>
+      <div class="trace-foot">
+        Load cell &rarr; ESP32-S3 firmware &rarr; BLE &rarr; Flutter. The curve above is the shape
+        of the thing I built. It is also, roughly, the shape of the last two years.
+      </div>
+    </div>
+
+    <div class="readout">
+      <div><b>5</b><span class="label">Patents under my name</span></div>
+      <div><b>906</b><span class="label">Commits, public repo</span></div>
+      <div><b>2</b><span class="label">App stores shipped to</span></div>
+      <div><b>12</b><span class="label">Years building, since age 20</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="brief">
+  <div class="wrap">
+    <span class="label">Section 01</span>
+    <h2>Your five asks, answered in order</h2>
+    <p class="lede">
+      Your ad listed exactly what you wanted instead of a resume. Here it is, in your order,
+      with everything linked.
+    </p>
+
+    <div class="asks">
+      <div class="ask">
+        <span class="label">Your GitHub</span>
+        <p><a href="https://github.com/khangeqkai">github.com/khangeqkai</a> &mdash; two production repos made public for this application, plus a firmware reflash project.</p>
+      </div>
+      <div class="ask">
+        <span class="label">Your portfolio</span>
+        <p>This page. Seven entries below, with stacks, timelines, and honest post-mortems on the two that died.</p>
+      </div>
+      <div class="ask">
+        <span class="label">Favourite project</span>
+        <p><a href="#forma">Forma.training</a> &mdash; a climbing dynamometer and training app. My hardware, my firmware, my app, my company. Also the project where I stopped treating AI as autocomplete.</p>
+      </div>
+      <div class="ask">
+        <span class="label">AI tools, daily</span>
+        <p><a href="#ai">Section 03</a> &mdash; which tool for which job, and what I don't hand over. For AI shipped <em>inside</em> a product rather than used to build one, see <a href="#auric">Auric</a>.</p>
+      </div>
+      <div class="ask">
+        <span class="label">Loom, 5 min max</span>
+        <p><a href="#loom">Section 05</a> &mdash; walking through the Forma codebase, including the agent config I ship with the repo.</p>
+      </div>
+      <div class="ask">
+        <span class="label">Shipped fast</span>
+        <p>Idea to working dynamometer prototype: <strong>14 days.</strong> Idea to a CNC shop's first usable production build: <strong>1 month.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <span class="label">Section 02</span>
+    <h2>What I've built</h2>
+    <p class="lede">Ordered by how much it tells you about the job you're hiring for &mdash; not by date.</p>
+
+    <!-- 1 -->
+    <article class="proj" id="forma">
+      <div class="proj-head">
+        <h3>Forma.training</h3>
+        <span class="tag live">Shipped &middot; 200 users</span>
+      </div>
+      <div class="proj-body">
+        <p>
+          A dynamometer for climbers with a research-backed training program attached. You pull,
+          it measures force over time, and the app turns that curve into something you can act on
+          this session rather than a number you write in a notebook.
+        </p>
+        <p>
+          The interesting constraint was where climbers actually are: at a crag, on granite,
+          with no signal. So the app is offline-first by design &mdash; PowerSync over Supabase, so a
+          full session syncs whenever the phone finds a network again, hours later, without the
+          user thinking about it. I designed the UX, the software architecture, and the compression
+          algorithm for the force data. Claude and Cursor did the firmware, the UI and the backend
+          under my direction.
+        </p>
+        <p>
+          The company has since stopped operating. The app still has around 200 users and 30 daily
+          actives on the last release, and the repo is public so you can read how it was actually put together
+          &mdash; including <span class="mono">CLAUDE.md</span> and the <span class="mono">.claude/</span>
+          config that shaped how the agents worked on it.
+        </p>
+      </div>
+      <div class="spec">
+        <dl>
+          <dt>Stack</dt><dd>Flutter &middot; Supabase &middot; PowerSync &middot; Figma &middot; BLE &middot; ESP32-S3 (ESP-IDF + Arduino) &middot; load cell &middot; custom PCB &amp; enclosure</dd>
+          <dt>AI in the loop</dt><dd>Claude + Cursor across firmware, UI and backend</dd>
+          <dt>Timeline</dt><dd>14 days to working prototype &middot; 3 months to both app stores</dd>
+          <dt>Team</dt><dd>Solo &mdash; hardware, firmware, app, design</dd>
+        </dl>
+      </div>
+      <div class="links">
+        <a href="https://github.com/khangeqkai/forma_training_v3">Repo &mdash; 906 commits</a>
+        <a href="https://www.instagram.com/forma.training/">The hardware, on video</a>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="proj" id="auric">
+      <div class="proj-head">
+        <h3>Auric &mdash; AI scent engine</h3>
+        <span class="tag live">Live &middot; shipping</span>
+      </div>
+      <div class="proj-body">
+        <p>
+          Auric make a diffuser that holds eight individual oils in one unit. I built the AI layer
+          that decides what it runs. The app asks the user how they're feeling, what they're drawn
+          to, and whether the unit should run at all &mdash; then sends that state to Claude, which
+          returns a blend across the eight channels. The app validates the response and actuates
+          the hardware.
+        </p>
+        <p>
+          The engineering that matters here isn't the API call, it's everything around it. A
+          language model is deciding what a physical device does in someone's home, so the response
+          has to conform to a strict contract before anything switches on: valid channels, valid
+          proportions, nothing outside the envelope. I designed the prompt structure, the reply
+          format, and the failure path &mdash; what the unit does when the model returns something
+          malformed or refuses. The device degrades gracefully instead of doing nothing, or worse,
+          something wrong.
+        </p>
+        <p>
+          Another developer built the app. I was brought in for the AI integration, and separately
+          consulted on mass manufacture, DFM, DFA and electronics compliance. It's live and shipping.
+          Under NDA, so there's no link &mdash; happy to walk through the architecture in person.
+        </p>
+      </div>
+      <div class="spec">
+        <dl>
+          <dt>AI</dt><dd>Anthropic API, Claude Opus 5 &middot; structured output contract &middot; validation and rejection handling</dd>
+          <dt>My scope</dt><dd>AI architecture, prompt design, response schema, failure behaviour &middot; plus DFM / DFA / compliance consulting</dd>
+          <dt>Status</dt><dd>Live and shipping &middot; NDA</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="proj" id="dh">
+      <div class="proj-head">
+        <h3>DH Engineering</h3>
+        <span class="tag live">Live &middot; in production</span>
+      </div>
+      <div class="proj-body">
+        <p>
+          A CNC machine shop was losing money in the gap between the floor and the invoice: job
+          time logged on paper, drawings scattered, costings assembled by memory at the end of the
+          month. I sat with them, watched the actual workflow, and shipped a first usable build in
+          a month.
+        </p>
+        <p>
+          Machinists log time against a job and attach documents from the shop floor. Admin gets
+          costings that add up and invoices that go out the same week. It's unglamorous internal
+          tooling for a business that doesn't care what framework it's written in &mdash; which is
+          the kind of software I find most satisfying to build. Still running, still being extended.
+        </p>
+      </div>
+      <div class="spec">
+        <dl>
+          <dt>Stack</dt><dd>React 18 &middot; Vite &middot; SQLite</dd>
+          <dt>Timeline</dt><dd>First conversation to prototype in 1 month &middot; ongoing</dd>
+          <dt>Team</dt><dd>Solo, direct with the business owner</dd>
+        </dl>
+      </div>
+      <div class="links">
+        <a href="https://github.com/khangeqkai/DHEngineering">Repo</a>
+        <a href="http://www.dhengineering.com.au/">DH Engineering</a>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="proj">
+      <div class="proj-head">
+        <h3>UAMTEC &mdash; Atlas &amp; Barreleye</h3>
+        <span class="tag">Lead engineer &middot; in market</span>
+      </div>
+      <div class="proj-body">
+        <p>
+          Atlas is an autonomous underwater vehicle that maps subsea and submerged environments
+          using AI, sonar imaging and 4K capture. Barreleye Dive is the subsea camera and lighting
+          system that goes with it. Both are commercial products you can go and read the spec sheets
+          for right now &mdash; which is rarer, in my experience, than a repo full of prototypes.
+        </p>
+        <p>
+          I led the build on both with a team of eight: the electronics,
+          the pressure-rated mechanical design, sensor fusion across DVL, IMU, depth and sonar, the
+          tether and telemetry, and the data pipeline that turns raw sensor output into a map an
+          operator can actually use. Concept to working system took about three months each. The
+          rest of the two years went into manufacturing setup &mdash; which is what a pressure-rated
+          subsea product costs before you can sell one. All five of my patents came out of this work.
+        </p>
+      </div>
+      <div class="spec">
+        <dl>
+          <dt>Stack</dt><dd>C++ &middot; Python &middot; C# &middot; embedded firmware &middot; PCB design &middot; DVL / IMU / sonar / LiDAR sensor fusion</dd>
+          <dt>Timeline</dt><dd>~3 months concept to working system, each &middot; ~2 years including manufacturing setup</dd>
+          <dt>Team</dt><dd>Lead engineer, team of 8, multiple product lines</dd>
+        </dl>
+      </div>
+      <div class="links">
+        <a href="https://www.uamtec.com/technology/atlas">Atlas &mdash; product page</a>
+        <a href="https://www.uamtec.com/technology/barreleye-dive">Barreleye Dive &mdash; product page</a>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="proj">
+      <div class="proj-head">
+        <h3>Delivery smart lock</h3>
+        <span class="tag">Patent filed &middot; solo</span>
+      </div>
+      <div class="proj-body">
+        <p>
+          Food delivery has a trust gap: nobody can prove the bag wasn't opened between the kitchen
+          and the door. So I built a lock that closes at pickup and only opens when the customer
+          gives the driver a code. Hardware, firmware, app, and the design-for-manufacture work,
+          then four weeks preparing the documentation my patent lawyer needed. The application was
+          filed but never granted.
+        </p>
+      </div>
+      <div class="spec">
+        <dl>
+          <dt>Stack</dt><dd>Flutter &middot; Python &middot; embedded C++ &middot; C# &middot; hardware design for manufacture</dd>
+          <dt>Timeline</dt><dd>3 months to prototype &middot; 1 month to patent filing</dd>
+          <dt>Team</dt><dd>Solo</dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="proj">
+      <div class="proj-head">
+        <h3>Things I build anyway</h3>
+        <span class="tag">Nobody asked for these</span>
+      </div>
+      <div class="proj-body">
+        <p>
+          Unpaid, unbriefed, mostly climbing-adjacent. This is the pile that never stops:
+        </p>
+        <ul>
+          <li>Computer vision that counts reps and sets from video and categorises the training automatically.</li>
+          <li>3D-printed tools for outdoor climbing &mdash; designed, printed, taken to actual rock, revised.</li>
+          <li>A pulling edge with the same geometry as Forma's but no electronics at all, because sometimes the sensor is the part you don't need.</li>
+          <li><a href="https://github.com/khangeqkai/RoarmM2">RoarmM2</a> &mdash; reflashed an off-the-shelf robotic arm to do something its manufacturer never intended. A couple of hours, then built and tested for reliability.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="proj-head">
+        <h3>OraWare &amp; AirDocket</h3>
+        <span class="tag dead">Both dead &middot; both paid for</span>
+      </div>
+      <div class="proj-body">
+        <p>
+          <strong>OraWare</strong> was hardware and software to help kids build healthier habits on
+          tablets, focused on eye strain &mdash; ATtiny, BLE, custom electronics, and an app.
+          <strong>AirDocket</strong> stored receipts in the cloud from a scan at the counter and
+          sorted them by category with machine learning. Six months each, two engineers each.
+        </p>
+        <p>
+          Neither survived, and both died the same way: six months of building before we found out
+          whether anyone wanted it. We could make anything, so we made everything. That's not a
+          strategy, it's an expensive hobby.
+        </p>
+        <p>
+          So I changed how I work. Forma went from idea to a working dynamometer in fourteen days,
+          in a real climber's hands, telling me what was wrong while it was still cheap to fix.
+          DH Engineering had a usable build on the shop floor a month after the first conversation.
+          Two startups' worth of tuition, and what it bought was the instinct to ship first
+          and ask the users, not the whiteboard.
+        </p>
+      </div>
+      <div class="spec">
+        <dl>
+          <dt>OraWare</dt><dd>Python &middot; C++ &middot; C# &middot; SQL &middot; ATtiny &middot; BLE &middot; custom hardware &middot; MIT App Inventor</dd>
+          <dt>AirDocket</dt><dd>Python &middot; Flutter &middot; machine learning classification</dd>
+          <dt>Timeline</dt><dd>6 months each &middot; teams of 2</dd>
+        </dl>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="ai">
+  <div class="wrap">
+    <span class="label">Section 03</span>
+    <h2>How I actually use AI</h2>
+    <p class="lede">
+      You wrote that using Claude twice doesn't make someone an AI engineer. Agreed &mdash; so here's
+      the specific division of labour, not a logo wall.
+    </p>
+
+    <table class="stack">
+      <thead>
+        <tr><th scope="col">Tool</th><th scope="col">What I reach for it to do</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Claude</td>
+          <td>Architecture and the gnarly work. I keep a <span class="mono">CLAUDE.md</span> in the repo to enforce the project's rules &mdash; conventions, boundaries, the things I don't want quietly re-litigated at 2am by an agent that's forgotten why a decision was made. On Forma it wrote firmware, UI and backend against my architecture, and produced the bug audit and dependency analysis docs that are still in the repo.</td>
+        </tr>
+        <tr>
+          <td>Cursor / Windsurf</td>
+          <td>The implementation grind. Multi-file refactors, wiring new screens through to the data layer, the long tail of work that's clear in my head and tedious in my hands.</td>
+        </tr>
+        <tr>
+          <td>v0 / Lovable / Bolt</td>
+          <td>First-pass UI when I need something on screen in twenty minutes to find out if a layout is wrong. I throw the output away and keep the inspiration &mdash; it's a sketching tool, not a foundation.</td>
+        </tr>
+        <tr>
+          <td>ChatGPT</td>
+          <td>Thinking out loud early, and unfamiliar-domain reconnaissance before I commit to an approach.</td>
+        </tr>
+        <tr>
+          <td>What I don't do</td>
+          <td>Ship what an agent hands me without reading it. Ten years of hardware taught me that a mistake you can't hotfix costs a tooling run &mdash; so I still review architecture, data models and anything touching a user's data line by line. Speed comes from knowing which parts deserve that.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="track">
+  <div class="wrap">
+    <span class="label">Section 04</span>
+    <h2>The rest of the track record</h2>
+    <p class="lede">Shorter engagements and roles that don't need their own case study.</p>
+
+    <div class="track">
+      <div class="track-row">
+        <b>Vawdrey</b>
+        <p>Automated curtain system for shipping truck containers, for <a href="https://www.vawdrey.com.au/">Vawdrey Australia</a> &mdash; the nation's largest privately held trailer manufacturer. Radio remote control and embedded electronics. Solo: 6 months to prototype, 6 more to mass manufacture. Still in production.</p>
+      </div>
+      <div class="track-row">
+        <b>Peerless</b>
+        <p>Custom automation for butter container unpackaging. Embedded and PLC. 2 months to prototype, 3 to manufacture.</p>
+      </div>
+      <div class="track-row">
+        <b>Toyota</b>
+        <p>Lead Evaluation Engineer, 1 year. CAN bus and vehicle inter-communication.</p>
+      </div>
+      <div class="track-row">
+        <b>FlexMotion Tech</b>
+        <p>Product and electronics consulting for <a href="https://www.instagram.com/flexmotiontech/">FlexMotion Tech</a>.</p>
+      </div>
+      <div class="track-row">
+        <b>RoarmM2</b>
+        <p>A couple of hours of firmware archaeology: reflashed an off-the-shelf robotic arm to do something its manufacturer never intended, then built and tested it for reliability. <a href="https://github.com/khangeqkai/RoarmM2">Repo</a>.</p>
+      </div>
+      <div class="track-row">
+        <b>Education</b>
+        <p>Bachelor of Mechatronics Engineering (Honours).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="loom">
+  <div class="wrap">
+    <span class="label">Section 05</span>
+    <h2>Five minutes, walked through</h2>
+    <p class="lede">
+      A tour of the Forma codebase: the offline-first architecture, the agent config I keep in the
+      repo, and where I let AI run versus where I don't.
+    </p>
+    <!-- ============================================================
+         TODO KHANG: paste your Loom URL below, replacing the two
+         instances of REPLACE_WITH_LOOM_URL. Then delete this comment
+         and the .placeholder div underneath the button.
+         ============================================================ -->
+    <div class="loom">
+      <p>Loom &mdash; under 5 minutes</p>
+      <a class="btn" href="REPLACE_WITH_LOOM_URL">Watch the walkthrough</a>
+      <div class="placeholder">&#9888; PLACEHOLDER &mdash; swap REPLACE_WITH_LOOM_URL for the real Loom link before sending, then delete this box.</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="label">Section 06</span>
+    <h2>Talk to me</h2>
+    <p class="lede">
+      Melbourne-based, freelancing now, and looking for the thing your ad describes: shipping many
+      products fast rather than maintaining one slowly.
+    </p>
+
+    <div class="cgrid">
+      <div>
+        <span class="label">Email</span>
+        <a href="mailto:khang.eqkai@gmail.com">khang.eqkai@gmail.com</a>
+      </div>
+      <div>
+        <span class="label">Phone</span>
+        <a href="tel:0403827783">0403 827 783</a>
+      </div>
+      <div>
+        <span class="label">Right to work in Australia</span>
+        <p style="margin:0">Full working rights, no restrictions.</p>
+      </div>
+      <div>
+        <span class="label">Notice period</span>
+        <p style="margin:0">4 weeks.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:26px">
+      <a class="btn ghost" href="https://github.com/khangeqkai">See the code</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Built by Khang Nguyen for EMBR Group &middot; Melbourne<br>
+    One HTML file, no framework, no build step. It seemed like the right way to answer this ad.
+  </div>
+</footer>
+
+</body>
+</html>

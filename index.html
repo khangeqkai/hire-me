@@ -256,7 +256,9 @@ footer{padding:22px 0 60px;font-family:var(--mono);font-size:11px;color:var(--in
       tooling run, so you learn to get it right the first time.
       <strong>Then AI collapsed my timeline.</strong> My last product went from idea to working
       prototype in fourteen days and onto both app stores in three months. Solo &mdash; hardware,
-      firmware and app. Software speed, hardware discipline. Below is the evidence, not the claim.
+      firmware and app. Then I read your ad and built
+      <a href="#skindabase">Skindabase</a> in an afternoon to answer it. Software speed, hardware
+      discipline. Below is the evidence, not the claim.
     </p>
 
     <!-- SIGNATURE: dynamometer trace, drawn from the Forma.training hardware -->
@@ -300,9 +302,9 @@ footer{padding:22px 0 60px;font-family:var(--mono);font-size:11px;color:var(--in
     </div>
 
     <div class="readout">
+      <div><b>1</b><span class="label">Afternoon, idea to deployed</span></div>
       <div><b>5</b><span class="label">Patents under my name</span></div>
       <div><b>906</b><span class="label">Commits, public repo</span></div>
-      <div><b>2</b><span class="label">App stores shipped to</span></div>
       <div><b>12</b><span class="label">Years building, since age 20</span></div>
     </div>
   </div>
@@ -320,11 +322,11 @@ footer{padding:22px 0 60px;font-family:var(--mono);font-size:11px;color:var(--in
     <div class="asks">
       <div class="ask">
         <span class="label">Your GitHub</span>
-        <p><a href="https://github.com/khangeqkai">github.com/khangeqkai</a> &mdash; two production repos made public for this application, plus a firmware reflash project.</p>
+        <p><a href="https://github.com/khangeqkai">github.com/khangeqkai</a> &mdash; four public repos: this application's build, two production projects, and a firmware reflash.</p>
       </div>
       <div class="ask">
         <span class="label">Your portfolio</span>
-        <p>This page. Seven entries below, with stacks, timelines, and honest post-mortems on the two that died.</p>
+        <p>This page. Eight entries below, with stacks, timelines, and honest post-mortems on the two that died.</p>
       </div>
       <div class="ask">
         <span class="label">Favourite project</span>
@@ -332,7 +334,7 @@ footer{padding:22px 0 60px;font-family:var(--mono);font-size:11px;color:var(--in
       </div>
       <div class="ask">
         <span class="label">AI tools, daily</span>
-        <p><a href="#ai">Section 03</a> &mdash; which tool for which job, and what I don't hand over. For AI shipped <em>inside</em> a product rather than used to build one, see <a href="#auric">Auric</a>.</p>
+        <p><a href="#ai">Section 03</a> &mdash; which tool for which job, and what I don't hand over. For AI shipped <em>inside</em> a product rather than used to build one, see <a href="#auric">Auric</a> and <a href="#skindabase">Skindabase</a>.</p>
       </div>
       <div class="ask">
         <span class="label">Loom, 5 min max</span>
@@ -340,7 +342,7 @@ footer{padding:22px 0 60px;font-family:var(--mono);font-size:11px;color:var(--in
       </div>
       <div class="ask">
         <span class="label">Shipped fast</span>
-        <p>Idea to working dynamometer prototype: <strong>14 days.</strong> Idea to a CNC shop's first usable production build: <strong>1 month.</strong></p>
+        <p><a href="#skindabase">Skindabase</a> &mdash; Next.js, TypeScript, Tailwind, Anthropic API, live on Vercel. Idea to deployed in an afternoon, after reading your ad. Before that: a working dynamometer prototype in <strong>14 days</strong>, and a CNC shop's first usable build in <strong>1 month</strong>.</p>
       </div>
     </div>
   </div>
@@ -353,6 +355,51 @@ footer{padding:22px 0 60px;font-family:var(--mono);font-size:11px;color:var(--in
     <p class="lede">Ordered by how much it tells you about the job you're hiring for &mdash; not by date.</p>
 
     <!-- 1 -->
+    <article class="proj" id="skindabase">
+      <div class="proj-head">
+        <h3>Skindabase</h3>
+        <span class="tag live">Built for this application</span>
+      </div>
+      <div class="proj-body">
+        <p>
+          You paste the products in your skincare routine and get back a morning and an evening
+          &mdash; ordered, with the ingredient clashes named and a fix for each. Built, deployed
+          and live in an afternoon, in the stack your ad asks for.
+        </p>
+        <p>
+          The interesting part isn't the API call, it's the contract around it. Claude
+          <em>proposes</em> a schedule; the application <em>validates</em> it against a Zod schema
+          before anything renders. Malformed response, unexpected shape, or a refusal &mdash; the
+          app degrades with a clear message rather than rendering half an object. Nothing
+          unvalidated reaches the user.
+        </p>
+        <p>
+          That's deliberately the same architecture as the <a href="#auric">Auric diffuser</a>:
+          model proposes, application validates, nothing acts on unchecked output. There it
+          actuates eight oil channels in someone's home; here it draws a schedule. Same discipline,
+          different output surface &mdash; and the hardware version is why I write the web one this way.
+        </p>
+        <p>
+          It's scoped narrowly on purpose: ingredient scheduling only, no diagnosis, no treatment
+          advice, and a visible pointer to a dermatologist for anything that's actually a skin
+          concern. A narrow job is a verifiable one.
+        </p>
+      </div>
+      <div class="spec">
+        <dl>
+          <dt>Stack</dt><dd>Next.js (App Router) &middot; TypeScript &middot; Tailwind &middot; Zod &middot; Anthropic API &middot; Vercel</dd>
+          <dt>Timeline</dt><dd>Idea to deployed in an afternoon</dd>
+          <dt>Note</dt><dd>My first TypeScript. Twelve years of C++, C#, Python and Dart made the transfer quick; the strictness is the point.</dd>
+          <dt>Team</dt><dd>Solo, with Claude Code</dd>
+        </dl>
+      </div>
+      <div class="links">
+        <a href="https://skindabase.vercel.app/">Use it</a>
+        <a href="https://github.com/khangeqkai/skindabase">Repo &mdash; see the validation layer</a>
+      </div>
+    </article>
+
+    <!-- 2 -->
     <article class="proj" id="forma">
       <div class="proj-head">
         <h3>Forma.training</h3>
@@ -393,7 +440,7 @@ footer{padding:22px 0 60px;font-family:var(--mono);font-size:11px;color:var(--in
       </div>
     </article>
 
-    <!-- 2 -->
+    <!-- 3 -->
     <article class="proj" id="auric">
       <div class="proj-head">
         <h3>Auric &mdash; AI scent engine</h3>
@@ -610,7 +657,7 @@ footer{padding:22px 0 60px;font-family:var(--mono);font-size:11px;color:var(--in
         </tr>
         <tr>
           <td>What I don't do</td>
-          <td>Ship what an agent hands me without reading it. Ten years of hardware taught me that a mistake you can't hotfix costs a tooling run &mdash; so I still review architecture, data models and anything touching a user's data line by line. Speed comes from knowing which parts deserve that.</td>
+          <td>Ship what an agent hands me without reading it. Twelve years of hardware taught me that a mistake you can't hotfix costs a tooling run &mdash; so I still review architecture, data models and anything touching a user's data line by line. Speed comes from knowing which parts deserve that.</td>
         </tr>
       </tbody>
     </table>
